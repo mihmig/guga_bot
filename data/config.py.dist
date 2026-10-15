@@ -1,0 +1,8 @@
+config = {
+    'bot_token': '',
+    'dbname': 'guga',
+    'user': 'guga',
+    'password': '',
+    'host': 'localhost',
+    'port': 5437
+}

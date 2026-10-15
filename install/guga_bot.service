@@ -1,0 +1,20 @@
+[Unit]
+Description=guga_bot
+After=syslog.target
+After=network.target
+After=postgresql.service
+
+[Service]
+Type=simple
+PIDFile=/var/lib/guga_bot.pid
+WorkingDirectory=/projects/guga_bot/
+User=root
+Group=root
+Environment=PYTHONPATH=/projects/guga_bot
+Environment=VIRTUAL_ENV=/projects/guga_bot/.venv
+ExecStart=/projects/guga_bot/.venv/bin/python3 /projects/guga_bot/guga_bot.py
+OOMScoreAdjust=-100
+TimeoutSec=300
+Restart=always
+[Install]
+WantedBy=multi-user.target

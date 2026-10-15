@@ -1,0 +1,461 @@
+### Удалить сообщение
+POST https://api.telegram.org/bot{{bot_token}}/deletemessage?chat_id=47254369&message_id=22
+
+### Простое сообщение
+POST https://api.telegram.org/bot{{bot_token}}/
+Content-Type: application/json
+
+{
+  "method": "sendmessage",
+  "chat_id": "47254369",
+  "message_id": 675,
+  "text": "Привет!"
+}
+
+### Редактирование сообщения
+POST https://api.telegram.org/bot{{bot_token}}/
+Content-Type: application/json
+
+{
+  "method": "editmessagetext",
+  "message_id": 661,
+  "chat_id": "47254369",
+  "text": "Привет!"
+}
+
+### Клавиатура снизу
+POST https://api.telegram.org/bot{{bot_token}}/
+Content-Type: application/json
+
+{
+  "method": "sendmessage",
+  "chat_id": "47254369",
+  "text": "Укажите Ваш пол",
+         "reply_markup": {
+             "one_time_keyboard": true,
+             "keyboard": [
+                [{"text": "Мужской"}, {"text": "Женский"}
+                ],
+               ["Отмена"]]
+         }
+     }
+
+### Клавиатура обычная
+POST https://api.telegram.org/bot{{bot_token}}/
+Content-Type: application/json
+
+{
+    "method": "sendmessage",
+    "chat_id": 47254369,
+    "text": "Выберите пункт анкеты",
+    "reply_markup": {
+        "inline_keyboard": [
+            [
+                {"text": "Фамилия", "callback_data": "last_name"},
+                {"text": "Имя", "callback_data": "first_name"},
+                {"text": "Отчество", "callback_data": "middle_name"}
+            ],
+            [
+                {"text": "📱 Контактный телефон", "callback_data": "phone"},
+                {"text": "📅 Дата рождения", "callback_data": "birthdate"}
+            ],
+            [
+                {"text": "Пол 👨/👩", "callback_data": "sex"},
+                {"text": "📧 e-mail", "callback_data": "email"}
+            ],
+            [
+                {"text": "ИНН", "callback_data": "inn"},
+                {"text": "Рост", "callback_data": "size"}
+            ],
+            [
+                {"text": "⏮️ Назад", "callback_data": "main_menu"},
+                {"text": "🏠 В начало", "callback_data": "main_menu"},
+                {"text": "Далее ⏭️", "callback_data": "profile_menu_2"}
+            ]
+        ]
+    }
+}
+
+### Клавиатура обычная
+POST https://api.telegram.org/bot{{bot_token}}/
+Content-Type: application/json
+
+{
+    "method": "sendmessage",
+    "chat_id": 47254369,
+    "text": "Выберите пункт анкеты",
+    "reply_markup": {
+        "inline_keyboard": [
+            [{"text": "Адрес места проживания", "callback_data": "residence_address"}],
+            [{"text": "Страна гражданства", "callback_data": "country_of_citizenship"}],
+            [
+                {"text": "Место рождения", "callback_data": "place_of_birth"},
+                {"text": "Статус", "callback_data": "status"}
+            ],
+            [
+                {"text": "📅 Дата рождения", "callback_data": "birthdate"},
+                {"text": "Пол 👨/👩", "callback_data": "sex"}
+            ],
+            [{"text": "⏮️ Назад", "callback_data": "profile_menu_1"},
+             {"text": "🏠 В начало", "callback_data": "main_menu"},
+             {"text": "Далее ⏭️", "callback_data": "profile_menu_3"}
+             ]
+        ]
+    }
+}
+
+### Клавиатура обычная
+POST https://api.telegram.org/bot{{bot_token}}/
+Content-Type: application/json
+
+{
+    "method": "sendmessage",
+    "chat_id": 47254369,
+    "text": "Удостоверение личности:",
+    "reply_markup": {
+        "inline_keyboard": [
+            [
+                {"text": "Вид", "callback_data": "document_type"},
+                {"text": "Серия", "callback_data": "document_series"},
+                {"text": "Номер", "callback_data": "document_number"}
+            ],
+            [
+                {"text": "📅 Дата выдачи", "callback_data": "document_date"},
+                {"text": "Кем выдано", "callback_data": "document_issue"}
+            ],
+            [{"text": "Код подразделения", "callback_data": "sex"}],
+            [
+                {"text": "⏮️ Назад", "callback_data": "profile_menu_1"},
+                {"text": "🏠 В начало", "callback_data": "main_menu"}
+            ]
+        ]
+    }
+}
+
+
+### Ввод номера телефона
+POST https://api.telegram.org/bot{{bot_token}}/
+Content-Type: application/json
+
+{
+    "method": "sendmessage",
+    "chat_id": 47254369,
+    "protect_content": true,
+    "text": "Предоставьте свой номер телефона:",
+    "reply_markup": {
+      "one_time_keyboard": true,
+      "keyboard": [
+        [{
+          "text": "Отправить номер", "request_contact": true
+        }],
+        ["Cancel"]]
+    }
+}
+
+### Ввод текстового параметра с вариантом выбора по кнопке
+POST https://api.telegram.org/bot{{bot_token}}/
+Content-Type: application/json
+
+{
+    "method": "sendmessage",
+    "chat_id": 47254369,
+    "protect_content": true,
+    "text": "Введите Ваше отчество:",
+    "reply_markup": {
+        "inline_keyboard": [
+            [
+                {"text": "Отсутствует", "callback_data": "value|-"}
+            ],
+            [
+                {"text": "⏮️ Назад", "callback_data": "back"},
+                {"text": "🏠 В начало", "callback_data": "main_form"}
+            ]
+        ]
+    }
+}
+
+### Ввод параметра с выбором из ограниченного числа вариантов
+POST https://api.telegram.org/bot{{bot_token}}/
+Content-Type: application/json
+
+{
+    "method": "sendmessage",
+    "chat_id": 47254369,
+    "method": "sendmessage",
+    "chat_id": 0,
+    "protect_content": true,
+    "text": "Укажите Ваш факультет:",
+    "reply_markup": {
+        "inline_keyboard": [
+            [
+                {"text": "✈️ ФЛЭ", "callback_data": "value|fle"},
+                {"text": "🛠 ФАИТОП", "callback_data": "value|faitop"}
+            ],
+            [
+                {"text": "🧯 ФТСБ", "callback_data": "value|ftsb"},
+                {"text": "💼 ФЭУП", "callback_data": "value|feup"}
+            ],
+            [
+                {"text": "⏮️ Назад", "callback_data": "back"},
+                {"text": "🏠 В начало", "callback_data": "main_form"}
+            ]
+        ]
+    }
+}
+
+### Ввод параметра с выбором из ограниченного числа вариантов
+POST https://api.telegram.org/bot{{bot_token}}/
+Content-Type: application/json
+
+{
+    "method": "sendmessage",
+    "chat_id": 47254369,
+    "method": "sendmessage",
+    "chat_id": 0,
+    "protect_content": true,
+    "text": "Укажите Ваш статус:",
+    "reply_markup": {
+        "inline_keyboard": [
+            [
+                {"text": "🔵 Абитуриент", "callback_data": "value|applicant"},
+                {"text": "🟢 Студент", "callback_data": "value|student"}
+            ],
+            [
+                {"text": "🟣 Преподаватель", "callback_data": "value|teacher"},
+                {"text": "🟠 Сотрудник", "callback_data": "value|staff"}
+            ],
+            [
+                {"text": "🟤 Прочее", "callback_data": "value|other"}
+            ],
+            [
+                {"text": "⏮️ Назад", "callback_data": "back"},
+                {"text": "🏠 В начало", "callback_data": "main_form"}
+            ]
+        ]
+    }
+}
+
+### Ввод параметра с выбором из ограниченного числа вариантов
+POST https://api.telegram.org/bot{{bot_token}}/
+Content-Type: application/json
+
+{
+    "method": "sendmessage",
+    "chat_id": 47254369,
+    "method": "sendmessage",
+    "chat_id": 0,
+    "protect_content": true,
+    "text": "Выберите или укажите тип документа, удостоверяющего личность:",
+    "reply_markup": {
+        "inline_keyboard": [
+            [
+                {"text": "🇷🇺 Паспорт РФ", "callback_data": "value|passport"}
+            ],
+            [
+                {"text": "🏳️ Загранпаспорт", "callback_data": "value|foreign_passport"}
+            ],
+            [
+                {"text": "⏮️ Назад", "callback_data": "back"},
+                {"text": "🏠 В начало", "callback_data": "main_form"}
+            ]
+        ]
+    }
+}
+
+### Укажите размер Вашей обуви:
+POST https://api.telegram.org/bot{{bot_token}}/
+Content-Type: application/json
+
+{
+    "method": "sendmessage",
+    "chat_id": 47254369,
+    "protect_content": true,
+    "text": "Укажите размер Вашей обуви:",
+    "reply_markup": {
+        "inline_keyboard": [
+            [
+                {"text": "35", "callback_data": "value|35"},
+                {"text": "36", "callback_data": "value|36"},
+                {"text": "37", "callback_data": "value|37"},
+                {"text": "38", "callback_data": "value|38"}
+            ],
+            [
+                {"text": "39", "callback_data": "value|39"},
+                {"text": "40", "callback_data": "value|40"},
+                {"text": "41", "callback_data": "value|41"},
+                {"text": "42", "callback_data": "value|42"}
+            ],
+            [
+                {"text": "43", "callback_data": "value|43"},
+                {"text": "44", "callback_data": "value|44"},
+                {"text": "45", "callback_data": "value|45"},
+                {"text": "46", "callback_data": "value|46"}
+            ],
+            [
+                {"text": "⏮️ Назад", "callback_data": "back"},
+                {"text": "🏠 В начало", "callback_data": "main_form"}
+            ]
+        ]
+    }
+}
+
+### Укажите страну гражданства:
+POST https://api.telegram.org/bot{{bot_token}}/
+Content-Type: application/json
+
+{
+    "method": "sendmessage",
+    "chat_id": 47254369,
+    "text": "Укажите страну гражданства:",
+    "reply_markup": {
+        "inline_keyboard": [
+            [
+                {"text": "🇷🇺 Россия", "callback_data": "value|ru"},
+                {"text": "🇧🇾 Беларусь", "callback_data": "value|by"}
+            ],
+            [
+                {"text": "🇦🇲 Армения", "callback_data": "value|am"},
+                {"text": "🇺🇿 Узбекистан", "callback_data": "value|uz"}
+            ],
+            [
+                {"text": "🇹🇯 Таджикистан", "callback_data": "value|tj"},
+                {"text": "🇪🇨 Эквадор", "callback_data": "value|ec"}
+            ],
+            [
+                {"text": "🇰🇪 Кения", "callback_data": "value|ke"}
+            ],
+            [
+                {"text": "⏮️ Назад", "callback_data": "back"},
+                {"text": "🏠 В начало", "callback_data": "main_form"}
+            ]
+        ]
+    }
+}
+
+
+### Укажите размер Вашей обуви:
+POST https://api.telegram.org/bot{{bot_token}}/
+Content-Type: application/json
+
+{
+    "method": "sendmessage",
+    "chat_id": 47254369,
+    "protect_content": true,
+    "text": "Укажите год поступления:",
+    "reply_markup": {
+        "inline_keyboard": [
+            [
+                {"text": "🐓 2017", "callback_data": "value|2017"},
+                {"text": "🐶 2018", "callback_data": "value|2018"},
+                {"text": "🐷 2019", "callback_data": "value|2019"},
+                {"text": "🐀 2020", "callback_data": "value|2020"}
+            ],
+            [
+                {"text": "🐂 2021", "callback_data": "value|2021"},
+                {"text": "🐅 2022", "callback_data": "value|2022"},
+                {"text": "🐰 2023", "callback_data": "value|2023"},
+                {"text": "🐉 2024", "callback_data": "value|2024"}
+            ],
+            [
+                {"text": "⏮️ Назад", "callback_data": "back"},
+                {"text": "🏠 В начало", "callback_data": "main_form"}
+            ]
+        ]
+    }
+}
+
+### Выбор специальности для факультета ФЛЭ
+POST https://api.telegram.org/bot{{bot_token}}/
+Content-Type: application/json
+
+{
+    "method": "sendmessage",
+    "chat_id": 47254369,
+    "protect_content": true,
+    "text": "Укажите вашу специальность:",
+    "reply_markup": {
+        "inline_keyboard": [
+            [
+                {"text": "ОЛР", "callback_data": "value|olr"},
+                {"text": "ЛГВС", "callback_data": "value|lgvs"},
+                {"text": "ИВП", "callback_data": "value|ivp"}
+            ],
+            [
+                {"text": "ОРАНО", "callback_data": "value|orano"},
+                {"text": "ЭБАС", "callback_data": "value|ebas"}
+            ],
+            [
+                {"text": "⏮️ Назад", "callback_data": "back"},
+                {"text": "🏠 В начало", "callback_data": "main_form"}
+            ]
+        ]
+    }
+}
+### Выбор специальности для факультета ФАИТОП
+POST https://api.telegram.org/bot{{bot_token}}/
+Content-Type: application/json
+
+{
+    "method": "sendmessage",
+    "chat_id": 47254369,
+    "protect_content": true,
+    "text": "Укажите вашу специальность:",
+    "reply_markup": {
+        "inline_keyboard": [
+            [
+                {"text": "ОЛР", "callback_data": "value|"},
+                {"text": "ЛГВС", "callback_data": "value|"},
+                {"text": "ИВП", "callback_data": "value|"}
+            ],
+            [
+                {"text": "ОРАНО", "callback_data": "value|orano"},
+                {"text": "ЭБАС", "callback_data": "value|ebas"}
+            ],
+            [
+                {"text": "⏮️ Назад", "callback_data": "back"},
+                {"text": "🏠 В начало", "callback_data": "main_form"}
+            ]
+        ]
+    }
+}
+
+### Редактирование сообщения
+### Если пользователь удалил сообщение - можем получить HTTP/1.1 400 Bad Request "description": "Bad Request: message to edit not found"
+POST https://api.telegram.org/bot{{bot_token}}/
+Content-Type: application/json
+
+{
+    "method": "editmessagetext",
+    "message_id": 661,
+    "chat_id": 47254369,
+    "protect_content": true,
+    "text": "Укажите страну гражданства:",
+    "reply_markup": {
+        "inline_keyboard": [
+            [
+                {"text": "🇷🇺 Россия", "callback_data": "value|ru"},
+                {"text": "🇧🇾 Беларусь", "callback_data": "value|by"}
+            ],
+            [
+                {"text": "🇦🇲 Армения", "callback_data": "value|am"},
+                {"text": "🇺🇿 Узбекистан", "callback_data": "value|uz"}
+            ],
+
+            [
+                {"text": "⏮️ Назад", "callback_data": "back"},
+                {"text": "🏠 В начало", "callback_data": "main_form"}
+            ]
+        ]
+    }
+}
+
+### Удаление сообщений
+### "message_ids": [643,644,645,646,647,648,649,650,651,653,653,654,655,656]
+POST https://api.telegram.org/bot{{bot_token}}/
+Content-Type: application/json
+
+{
+    "method": "deletemessages",
+    "chat_id": 47254369,
+    "message_ids": [642,641,640,639,638,637,636,635,634,633,632,631,630,629]
+}
